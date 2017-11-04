@@ -1,5 +1,8 @@
 # wp-content
 
-plugins
-themes
+css
+font
+img
+js
 index.php
+xxx.php
