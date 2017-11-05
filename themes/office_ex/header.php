@@ -1,90 +1,60 @@
-<!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<!DOCTYPE HTML>
+<html dir="ltr" lang="ja">
 <head>
-  <meta charset="<?php bloginfo( 'charset' ); ?>">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <?php wp_head(); ?>
-
-  <!--[if lt IE 9]>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title><?php bloginfo('name'); ?></title>
+<link rel="apple-touch-icon" href="<?php bloginfo('template_url'); ?>/images/touch-icon.png" />
+<link rel="shortcut icon" href="<?php bloginfo('template_url'); ?>/images/favicon.ico" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('stylesheet_url'); ?>" />
+<!--[if lt IE 9]>
   <meta http-equiv="Imagetoolbar" content="no" />
-  <script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/html5shiv.min.js"></script>
-  <script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/respond.min.js"></script>
-  <![endif]-->
-
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-  <div id="wrapper">
-
-    <header id="header" class="header">
-
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12 col-sm-3 col-md-3">
-            <h1 class="header-logo text-hide"><a href="<?php echo esc_url( home_url() ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
-          </div>
-          <div class="col-xs-12 col-sm-9 col-md-9 xs-no-gutter">
-            <nav class="global-nav" role="navigation">
-              <button type="button" class="global-nav__toggle text-left visible-xs-block" data-toggle="collapse" data-target="#globalnav-collapse">
-                <span class="sr-only">メニューを開閉</span>
-                <span class="glyphicon glyphicon-menu-hamburger"></span>MENU
-              </button>
-              <div class="collapse" id="globalnav-collapse">
-                <ul class="global-nav__list clearfix">
-                  <li><a href="<?php echo esc_url( home_url() ); ?>"><span class="icon icon-home"></span>HOME</a></li>
-                  <?php if( term_exists( 'news', 'category' ) ): ?>
-                  <li><a href="<?php echo esc_url( get_term_link( 'news', 'category' ) ); ?>"><span class="icon icon-news"></span>NEWS</a></li>
-                  <?php endif; ?>
-                  <li><a href="<?php echo esc_url( home_url('/menu') ); ?>"><span class="icon icon-menu"></span>MENU</a></li>
-                  <li><a href="<?php echo esc_url( home_url('/access') ); ?>"><span class="icon icon-access"></span>ACCESS</a></li>
-                  <li><a href="<?php echo esc_url( home_url('/gallery') ); ?>"><span class="icon icon-gallery"></span>GALLERY</a></li>
-                  <?php if( term_exists( 'blog', 'category' ) ): ?>
-                  <li><a href="<?php echo esc_url( get_term_link( 'blog', 'category' ) ); ?>"><span class="icon icon-blog"></span>BLOG</a></li>
-                  <?php endif; ?>
-                </ul>
+<div id="wrap">
+  <section id="description">
+    <h1><?php bloginfo('description'); ?></h1>
+  </section><!-- #description end -->
+  <div id="container">
+    <header id="header">
+      <h1 id="site-id">
+        <a href="<?php echo home_url('/'); ?>"><img src="<?php bloginfo('template_url'); ?>/images/header/site_id.png" alt="<?php bloginfo('name'); ?>" /></a>
+      </h1><!-- #site-id end -->
+      <div id="utility-group">
+<?php
+  wp_nav_menu(array(
+    'container' => 'nav',
+    'container_id' => 'utility-nav',
+    'theme_location' => 'place_utility',
+  ));
+?>
+        <div id="header-widget-area">
+          <aside class="widget_search">
+            <form role="search" id="searchform">
+              <div>
+                <input type="text" id="s" />
+                <input type="submit" id="searchsubmit"/>
               </div>
-            </nav>
-          </div>
-        </div>
-      </div>
-
-      <div class="mainvisual <?php if( !is_front_page() ): echo 'mainvisual--subpage'; endif; ?>">
-        <div class="container page-title">
-        <?php if( is_front_page() ): ?>
-          <h2 class="font-serif text-right"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/img-home-mainvisual-effect.png" alt="HOME VISUAL" /></h2>
-          <?php else: ?>
-          <h2 class="page-title--subpage font-serif"><?php
-            if( is_single() || is_page() ):
-              the_title();
-            elseif( is_search() ):
-              echo '「'.esc_html( get_search_query() ).'」の検索結果';
-            elseif( is_404() ):
-              echo 'ページが見つかりませんでした';
-            else:
-              the_archive_title();
-            endif;
-             ?></h2>
-          <?php endif; ?>
-        </div>
-      </div>
-
-      <?php if( !is_front_page() ): ?>
-      <nav id="breadcrumb-nav" class="container">
-        <ul class="breadcrumb">
-          <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><span class="glyphicon glyphicon-home"></span>HOME</a></li>
-          <li><?php
-            if( is_single() || is_page() ):
-              the_title();
-            elseif( is_search() ):
-              echo '「'.esc_attr( get_search_query() ).'」の検索結果';
-            elseif( is_404() ):
-              echo '404 error not found';
-            else:
-              the_archive_title();
-            endif;
-            ?></li>
-        </ul>
-      </nav>
-      <?php endif; ?>
-      
-    </header>
+            </form><!-- #searchform end -->
+          </aside><!-- .widget_search end -->
+        </div><!-- #header-widget-area end -->
+      </div><!-- #utility-group end -->
+    </header><!-- #header end -->
+<?php wp_nav_menu(array(
+    'container' => 'nav',
+    'container_id' => 'global-nav',
+    'theme_location' => 'place_global',
+  ));
+?>
+<?php
+  if (is_front_page()) :
+ ?>
+    <section id="branding">
+      <img src="<?php header_image(); ?>" width="<?php echo HEADER_IMAGE_WIDTH; ?>" height="<?php echo HEADER_IMAGE_HEIGHT; ?>" alt="" />
+    </section><!-- #branding end -->
+    <section id="contents-body">
+<?php
+  endif;
+?>

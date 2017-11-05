@@ -1,5 +1,8 @@
-<?php
-if ( is_active_sidebar( 'subcol-widget-area') ) {
-  dynamic_sidebar( 'subcol-widget-area' );
-}
-?>
+      <section id="sidebar">
+        <div id="primary" class="widget-area">
+		subnavi
+        </div><!-- #primary end -->
+		<div id="secondary" class="widget-area">
+		facebbok
+		</div><!-- #secondary end -->
+      </section><!-- #sidebar end -->
