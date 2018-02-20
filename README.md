@@ -1,4 +1,5 @@
-# wp-content
+# wordpress
+wp-content
 
 plugins
 themes
