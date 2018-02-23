@@ -15,5 +15,8 @@ https://codex.wordpress.org/
 
 ### bitnami.wp
 https://bitnami.com/stack/xampp
+
 https://github.com/bitnami-labs
+
+https://github.com/bitnami
 
