@@ -1,4 +1,5 @@
 ### wordpress
+---
 wp-content
 
 plugins
