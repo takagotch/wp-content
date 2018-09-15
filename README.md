@@ -18,7 +18,7 @@ https://codex.wordpress.org/
 
 https://wpdocs.osdn.jp/Main_Page
 
-#### bitnami.wp
+#### bitnami.wp / XAMPP
 https://bitnami.com/stack/xampp
 
 https://github.com/bitnami-labs
